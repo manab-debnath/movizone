@@ -2,14 +2,11 @@ import { ClientPagination } from "@/components/ClientPaginationProps";
 import { MovieCard } from "@/components/MovieCard";
 import { getList } from "@/config/index";
 
-interface AnimeProps {
-	searchParams: {
-		page?: string;
-	};
-}
+type SearchParams = Promise<{ page?: string }>;
 
-export default async function Anime({ searchParams }: AnimeProps) {
-	const currentPage = Number(searchParams.page) || 1;
+export default async function Anime({ searchParams }: { searchParams: SearchParams }) {
+	const {page} = await searchParams
+	const currentPage = Number(page) || 1;
 
 	const animeList = await getList({
 		path: `/search/movie?query=anime&include_adult=false&language=en-US&page=${currentPage}`,

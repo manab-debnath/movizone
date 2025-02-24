@@ -2,14 +2,11 @@ import { ClientPagination } from "@/components/ClientPaginationProps";
 import { MovieCard } from "@/components/MovieCard";
 import { getList } from "@/config/index";
 
-interface TrendingProps {
-	searchParams: {
-		page?: string;
-	};
-}
+type SearchParams = Promise<{ page?: string }>;
 
-export default async function Trending({ searchParams }: TrendingProps) {
-	const currentPage = Number(searchParams.page) || 1;
+export default async function Trending({ searchParams }: { searchParams: SearchParams }) {
+	const { page } = await searchParams;
+	const currentPage = Number(page) || 1;
 
 	const trendingList = await getList({
 		path: `/trending/all/day?language=en-USpage=${currentPage}`,

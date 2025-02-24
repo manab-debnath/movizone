@@ -2,14 +2,11 @@ import { ClientPagination } from "@/components/ClientPaginationProps";
 import { MovieCard } from "@/components/MovieCard";
 import { getList } from "@/config/index";
 
-interface TVShowsPagesProps {
-	searchParams: {
-		page?: string;
-	};
-}
+type SearchParams = Promise<{ page?: string }>;
 
-export default async function TVShows({ searchParams }: TVShowsPagesProps) {
-	const currentPage = Number(searchParams.page) || 1;
+export default async function TVShows({ searchParams }: { searchParams: SearchParams }) {
+	const { page } = await searchParams;
+	const currentPage = Number(page) || 1;
 
 	const tvList = await getList({
 		path: `/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=${currentPage}&sort_by=popularity.desc`,

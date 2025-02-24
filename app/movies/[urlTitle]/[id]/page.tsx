@@ -1,14 +1,9 @@
 import { getList } from "@/config/index";
 
-interface MoviePageProps {
-	params: {
-		urlTitle: string;
-		id: string;
-	};
-}
+type SearchParams = Promise<{ urlTitle?: string; id?: string }>;
 
-export default async function MoviePage({ params }: MoviePageProps) {
-	const { id } = params;
+export default async function MoviePage({ params }: { params: SearchParams }) {
+	const { id } = await params;
 
 	const details = await getList({
 		path: `movie/${id}?language=en-US`,

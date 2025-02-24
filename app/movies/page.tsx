@@ -2,12 +2,11 @@ import { ClientPagination } from "@/components/ClientPaginationProps";
 import { MovieCard } from "@/components/MovieCard";
 import { getList } from "@/config/index";
 
-interface MoviePageProps {
-	searchParams: { page?: string };
-}
+type SearchParams = Promise<{ page?: string }>;
 
-export default async function Movies({ searchParams }: MoviePageProps) {
-	const currentPage = Number(searchParams.page) || 1;
+export default async function Movies({ searchParams }: { searchParams: SearchParams }) {
+	const { page } = await searchParams;
+	const currentPage = Number(page) || 1;
 
 	const data = await getList({
 		path: `discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=${currentPage}`,
