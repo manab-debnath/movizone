@@ -64,7 +64,7 @@ export default async function Home() {
 			/>
 
 			<Section>
-				<SectionHeader title="TRENDING" />
+				<SectionHeader title="TRENDING" href="/trending" />
 				<Grid columns="grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 xl:grid-cols-7">
 					{trendingList.results.slice(0, 14).map((item: any) => (
 						<div key={item.id} className="w-full flex justify-center">
@@ -94,7 +94,7 @@ export default async function Home() {
 			</Section>
 
 			<Section>
-				<SectionHeader title="TOP RATED" />
+				<SectionHeader title="TOP RATED" href="/top-rated"/>
 				<Grid>
 					{topRatedMovieList.results.slice(0, 14).map((item: any) => (
 						<div key={item.id} className="w-full flex justify-center">
@@ -110,7 +110,7 @@ export default async function Home() {
 			</Section>
 
 			<Section>
-				<SectionHeader title="POPULAR SERIES" />
+				<SectionHeader title="POPULAR SERIES" href="/tv-shows" />
 				<Grid>
 					{popularTVSeries.results.slice(0, 14).map((item: any) => (
 						<div key={item.id} className="w-full flex justify-center">
