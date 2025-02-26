@@ -4,7 +4,11 @@ import { getList } from "@/config/index";
 
 type SearchParams = Promise<{ page?: string }>;
 
-export default async function TopRated({ searchParams }: { searchParams: SearchParams }) {
+export default async function TopRated({
+	searchParams,
+}: {
+	searchParams: SearchParams;
+}) {
 	const { page } = await searchParams;
 	const currentPage = Number(page) || 1;
 
@@ -18,9 +22,10 @@ export default async function TopRated({ searchParams }: { searchParams: SearchP
 				{topRatedList.results.map((item: any) => (
 					<MovieCard
 						key={item.id}
-						poster_path={item.poster_path}
+						poster_path={item?.poster_path}
 						title={item.title || item.name}
-						pathname="top-rated"
+						id={item.id}
+						pathname="movies"
 					/>
 				))}
 			</div>
