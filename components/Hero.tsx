@@ -12,7 +12,7 @@ export const Hero = ({ title, caption, rating, backdrop_path }: propTypes) => {
 	const url = `http://image.tmdb.org/t/p/w500${backdrop_path}`;
 
 	return (
-		<div className="relative h-[500px] md:h-[600px] w-screen overflow-hidden rounded">
+		<div className="relative h-[500px] md:h-[600px] w-full overflow-hidden rounded">
 			<div className="absolute inset-0 bg-gradient-to-r from-black/90 to-black/60 md:to-transparent z-10" />
 
 			<div
