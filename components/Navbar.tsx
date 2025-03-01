@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { useScrollDirection } from "../hooks/useScrollDirection";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
