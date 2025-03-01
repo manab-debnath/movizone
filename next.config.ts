@@ -11,3 +11,5 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+console.log("Azure ENV:", process.env.NEXT_PUBLIC_THE_MOVIE_DATABASE_URL);
