@@ -8,8 +8,12 @@ const nextConfig: NextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
+	env: {
+		NEXT_PUBLIC_THE_MOVIE_DATABASE_URL:
+			process.env.NEXT_PUBLIC_THE_MOVIE_DATABASE_URL,
+		NEXT_PUBLIC_THE_MOVIE_DATABASE_API_KEY:
+			process.env.NEXT_PUBLIC_THE_MOVIE_DATABASE_API_KEY,
+	},
 };
 
 export default nextConfig;
-
-console.log("Azure ENV:", process.env.NEXT_PUBLIC_THE_MOVIE_DATABASE_URL);
