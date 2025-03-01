@@ -10,8 +10,13 @@ const menuList = [
 
 async function getList({ path }: { path: String }) {
 	try {
-		const url = process.env.NEXT_PUBLIC_THE_MOVIE_DATABASE_URL + "/" + path;
-		console.log("url ", url);
+		console.log(
+			"API Base URL:",
+			process.env.NEXT_PUBLIC_THE_MOVIE_DATABASE_URL
+		);
+
+		const url = `${process.env.NEXT_PUBLIC_THE_MOVIE_DATABASE_URL}/${path}`;
+		console.log("Final URL: ", url);
 
 		const response = await axios.get(url, {
 			headers: {
@@ -22,7 +27,7 @@ async function getList({ path }: { path: String }) {
 
 		return response.data;
 	} catch (error) {
-		console.log(error);
+		console.log("Error fetching data:", error);
 	}
 }
 
